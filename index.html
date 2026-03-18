@@ -16,6 +16,7 @@
       --accent:#C84B11; --accent-bg:rgba(200,75,17,0.07);
       --border:rgba(17,17,16,0.08);
       --green:#2A8A57; --green-bg:rgba(42,138,87,0.08);
+      --linkedin:#0A66C2; --github:#24292F;
       --font-head:'Bricolage Grotesque',sans-serif;
       --font-body:'DM Sans',sans-serif;
     }
@@ -53,6 +54,10 @@
     .btn { display:inline-flex; align-items:center; gap:0.45rem; padding:0.65rem 1.4rem; font-family:var(--font-body); font-size:13.5px; font-weight:500; text-decoration:none; border-radius:6px; transition:all 0.18s ease; letter-spacing:-0.01em; }
     .btn-primary { background:var(--accent); color:#fff; }
     .btn-primary:hover { background:#b03d08; transform:translateY(-1px); box-shadow:0 4px 14px rgba(200,75,17,0.25); }
+    .btn-linkedin { background:var(--linkedin); color:#fff; }
+    .btn-linkedin:hover { background:#084d94; transform:translateY(-1px); box-shadow:0 4px 14px rgba(10,102,194,0.3); }
+    .btn-github { background:var(--github); color:#fff; }
+    .btn-github:hover { background:#1a1f24; transform:translateY(-1px); box-shadow:0 4px 14px rgba(36,41,47,0.3); }
     .btn-line { border:1.5px solid var(--border); color:var(--muted); background:transparent; }
     .btn-line:hover { border-color:rgba(17,17,16,0.2); color:var(--text); transform:translateY(-1px); }
 
@@ -116,8 +121,6 @@
 
     .ctf-intro { font-size:15px; font-weight:300; color:var(--muted); line-height:1.78; max-width:640px; margin-bottom:2rem; }
     .ctf-intro b { font-weight:500; color:var(--text); }
-    .ctf-platforms { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:2rem; }
-    .platform-tag { display:inline-flex; align-items:center; gap:0.4rem; background:var(--bg-2); border:1px solid var(--border); border-radius:6px; padding:0.4rem 0.85rem; font-size:13px; font-weight:500; color:var(--muted); }
     .ctf-cta { display:inline-flex; align-items:center; gap:1rem; background:var(--bg-2); border:1px solid var(--border); border-radius:10px; padding:1.4rem 1.75rem; text-decoration:none; transition:all 0.18s; width:100%; max-width:460px; }
     .ctf-cta:hover { background:var(--bg-3); transform:translateY(-1px); box-shadow:0 4px 18px rgba(17,17,16,0.07); }
     .ctf-cta-icon { width:40px; height:40px; background:var(--bg-3); border-radius:8px; display:flex; align-items:center; justify-content:center; color:var(--muted-lt); font-size:1.1rem; flex-shrink:0; transition:all 0.18s; }
@@ -196,11 +199,11 @@
         <span class="htag">Porto, Portugal</span>
       </div>
       <div class="hero-btns">
-        <a href="https://www.linkedin.com/in/bernardo-sousa-605a30181/" class="btn btn-primary" target="_blank" rel="noopener">
+        <a href="https://www.linkedin.com/in/bernardo-sousa-605a30181/" class="btn btn-linkedin" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           Connect on LinkedIn
         </a>
-        <a href="https://github.com/Bernardo15Sousa" class="btn btn-line" target="_blank" rel="noopener">
+        <a href="https://github.com/Bernardo15Sousa" class="btn btn-github" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
           View GitHub
         </a>
@@ -219,7 +222,7 @@
       <div class="about-copy">
         <p>What got me into cybersecurity was <b>Digital Forensics and Incident Response</b>. The idea of reconstructing an attack — piecing together what happened, understanding the attacker's logic, figuring out what went wrong — genuinely fascinates me. I'm just as interested in the intelligence behind building an attack as I am in the work of taking it apart.</p>
         <p>I started my career in a <b>SOC environment</b>, which gave me the operational foundation I still rely on. Over time I moved toward <b>Security Engineering</b> — detection architecture, access control hardening, PKI, tabletop exercises, security tooling — which is where most of my focus sits today at Ascendi.</p>
-        <p>During university, I was actively competing in <b>CTF competitions</b>, mostly as a team. It was also where I started building tools alongside a group of colleagues — work we eventually formalised under <b>@cycurity</b>, an open-source org where we still collaborate.</p>
+        <p>During university, I was actively competing in <b>CTF competitions</b>, mostly as a team. It was also where I started building tools alongside a group of colleagues — work we eventually formalised under <b>@cycurity</b>, an open-source org.</p>
         <p>I'm a team player who thrives on new challenges. Whether it's a complex investigation, an unfamiliar environment, or a problem with no obvious answer — that's where I do my best work. I'm very comfortable with the <b>Fortinet stack</b> across production environments, including competition-level deployments.</p>
       </div>
       <div class="facts">
@@ -249,7 +252,7 @@
       <div><span class="exp-dates">2019 — 2022</span><span class="exp-co">S21sec · MSSP</span></div>
       <div>
         <div class="exp-title">SOC Consultant</div>
-        <div class="exp-body">Joined as a Tier 1 SOC Analyst and progressed through to Tier 3 at one of Europe's leading MSSPs. SOC operations, incident detection and response, threat hunting, and security analysis across a diverse portfolio of clients and industry verticals.</div>
+        <div class="exp-body">Joined as a Tier 1 SOC Analyst and progressed through to Tier 3. SOC operations, incident detection and response, threat hunting, and security analysis across a diverse portfolio of clients and industry verticals.</div>
         <div class="highlight">
           <div class="highlight-label">Major Incident Response</div>
           <div class="highlight-text">Participated in a large-scale IR engagement involving multiple coordinated response teams working around the clock to contain an active attack and restore operations. Extended monitoring shifts through the night — including live response to new attacker activity as it surfaced.</div>
@@ -298,12 +301,7 @@
 
   <section id="writeups">
     <p class="sec-label">CTF Write-ups</p>
-    <p class="ctf-intro">I've been doing <b>Capture the Flag</b> competitions since university — mostly on TryHackMe, HackTheBox, and picoCTF, usually with a teammate. Write-ups are published as Markdown on GitHub, covering the machines and challenges I find worth documenting.</p>
-    <div class="ctf-platforms">
-      <span class="platform-tag">TryHackMe</span>
-      <span class="platform-tag">HackTheBox</span>
-      <span class="platform-tag">picoCTF</span>
-    </div>
+    <p class="ctf-intro">I've been doing <b>Capture the Flag</b> competitions since university — usually with a teammate. Write-ups are published as Markdown on GitHub, covering the machines and challenges I find worth documenting.</p>
     <a href="https://github.com/Bernardo15Sousa/CTF_Writeups" class="ctf-cta" target="_blank" rel="noopener">
       <div class="ctf-cta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></div>
       <div><div class="ctf-cta-title">Read the write-ups →</div><div class="ctf-cta-sub">Published on GitHub · Markdown format</div></div>
