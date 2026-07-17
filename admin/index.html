@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="honeypot" content="true">
+<meta name="robots" content="noindex,nofollow">
+<title>Administrator Login</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f0f2f5;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.box{width:340px;background:#fff;border:1px solid #dcdfe4;border-radius:4px;padding:28px 26px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+h1{margin:0 0 4px;font-size:19px;color:#23282d}
+p.sub{margin:0 0 20px;font-size:12px;color:#72777c}
+label{display:block;font-size:13px;color:#23282d;margin:12px 0 4px}
+input{width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #8c8f94;border-radius:3px;font-size:14px}
+button{width:100%;margin-top:18px;padding:9px;background:#2271b1;color:#fff;border:none;border-radius:3px;font-size:14px;cursor:pointer}
+button:hover{background:#135e96}
+.ft{margin-top:16px;font-size:11px;color:#8c8f94;text-align:center}
+</style>
+</head>
+<body>
+<!-- monitored -->
+<div class="box">
+  <h1>Administrator</h1>
+  <p class="sub">Sign in to the control panel</p>
+  <form onsubmit="return false">
+    <label for="user">Username</label>
+    <input id="user" name="username" type="text" autocomplete="off">
+    <label for="pass">Password</label>
+    <input id="pass" name="password" type="password" autocomplete="off">
+    <button type="submit">Log In</button>
+  </form>
+  <div class="ft">Admin Panel v2.4.1</div>
+</div>
+</body>
+</html>

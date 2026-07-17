@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="honeypot" content="true">
+<meta name="robots" content="noindex,nofollow">
+<title>Sign In</title>
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#fafafa;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#333}
+.card{width:320px;background:#fff;border:1px solid #e3e3e3;border-radius:6px;padding:32px 28px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+h1{margin:0 0 6px;font-size:20px;font-weight:600}
+p.sub{margin:0 0 22px;font-size:13px;color:#888}
+label{display:block;font-size:12px;color:#555;margin:14px 0 5px}
+input{width:100%;box-sizing:border-box;padding:9px 11px;border:1px solid #ccc;border-radius:4px;font-size:14px}
+input:focus{outline:none;border-color:#4a90d9}
+button{width:100%;margin-top:22px;padding:10px;background:#4a90d9;color:#fff;border:none;border-radius:4px;font-size:14px;cursor:pointer}
+button:hover{background:#3a7bc0}
+.links{margin-top:16px;text-align:center;font-size:12px}
+.links a{color:#4a90d9;text-decoration:none}
+</style>
+</head>
+<body>
+<!-- monitored -->
+<div class="card">
+  <h1>Sign in</h1>
+  <p class="sub">Use your account to continue</p>
+  <form onsubmit="return false">
+    <label for="u">Username</label>
+    <input id="u" name="username" type="text" autocomplete="off">
+    <label for="p">Password</label>
+    <input id="p" name="password" type="password" autocomplete="off">
+    <button type="submit">Sign in</button>
+  </form>
+  <div class="links"><a href="#">Forgot password?</a></div>
+</div>
+</body>
+</html>

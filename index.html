@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/openpgp@5.11.2/dist/openpgp.min.js" defer></script>
+  <script src="https://unpkg.com/node-forge@1.3.1/dist/forge.min.js" defer></script>
 </head>
 <body>
 
@@ -89,6 +91,18 @@
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pe)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
     <div class="di-l">interests.conf</div>
   </div>
+  <div class="di" onclick="openW('security')" data-f="security" data-tooltip="This Site's Security Stack">
+    <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gr)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+    <div class="di-l">security.conf</div>
+  </div>
+  <div class="di" onclick="openW('toolkit')" data-f="toolkit" data-tooltip="Security Toolkit">
+    <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yl)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+    <div class="di-l">toolkit.sh</div>
+  </div>
+  <div class="di" onclick="openW('pipeline')" data-f="pipeline" data-tooltip="DevSecOps Pipeline">
+    <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+    <div class="di-l">pipeline.yml</div>
+  </div>
   <div class="di" onclick="openW('terminal')" data-f="terminal" data-tooltip="Interactive Terminal">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gr)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
     <div class="di-l">terminal</div>
@@ -119,6 +133,13 @@
 </div>
 
 <script src="script.js" defer></script>
+
+<!--
+  You know how to use DevTools. Good instinct.
+  But this isn't the flag yet.
+  Decode this: ZmxhZ3tzM3VyY2VfY29kM19yM3Zl
+  Hint: it's just base64.
+-->
 
 </body>
 </html>

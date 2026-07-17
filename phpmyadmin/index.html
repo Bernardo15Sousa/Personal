@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="honeypot" content="true">
+<meta name="robots" content="noindex,nofollow">
+<title>phpMyAdmin</title>
+<style>
+body{margin:0;background:#f6f6f6;font-family:sans-serif;font-size:13px;color:#444}
+#page{width:400px;margin:6% auto 0}
+.logo{text-align:center;padding:18px 0}
+.logo b{font-size:26px;color:#235a81;letter-spacing:-.5px}
+.logo span{display:block;font-size:11px;color:#888;margin-top:2px}
+.box{background:#fff;border:1px solid #ddd;border-radius:3px}
+.box h2{margin:0;padding:10px 14px;font-size:14px;font-weight:normal;background:#eee;border-bottom:1px solid #ddd;color:#235a81}
+form{padding:16px 18px}
+label{display:block;margin:0 0 4px;font-size:12px}
+input[type=text],input[type=password],select{width:100%;box-sizing:border-box;padding:6px;border:1px solid #aaa;border-radius:2px;margin-bottom:14px;font-size:13px}
+button{background:#235a81;border:none;color:#fff;padding:7px 18px;border-radius:2px;cursor:pointer;font-size:13px}
+button:hover{background:#1a4462}
+.ver{text-align:center;font-size:11px;color:#999;margin-top:14px}
+</style>
+</head>
+<body>
+<!-- monitored -->
+<div id="page">
+  <div class="logo"><b>phpMyAdmin</b><span>Database management</span></div>
+  <div class="box">
+    <h2>Welcome to phpMyAdmin</h2>
+    <form onsubmit="return false">
+      <label for="lang">Language</label>
+      <select id="lang"><option>English</option><option>Português</option><option>Deutsch</option></select>
+      <label for="pma_username">Username</label>
+      <input type="text" id="pma_username" name="pma_username" autocomplete="off">
+      <label for="pma_password">Password</label>
+      <input type="password" id="pma_password" name="pma_password" autocomplete="off">
+      <label for="pma_servername">Server Choice</label>
+      <select id="pma_servername"><option>localhost</option></select>
+      <button type="submit">Go</button>
+    </form>
+  </div>
+  <div class="ver">phpMyAdmin 4.9.7</div>
+</div>
+</body>
+</html>

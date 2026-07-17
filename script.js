@@ -31,6 +31,8 @@ setTimeout(showNotif,2700);
 const svgLi='<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
 const svgGh='<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>';
 
+const CONTACT_EMAIL='bernardo.sousa.15@protonmail.com';
+
 function tbIcon(key){
   const svg=document.querySelector(`.di[data-f="${key}"] .di-i svg`);
   return svg?svg.outerHTML:'';
@@ -122,7 +124,172 @@ const W={
 <div class="ir"><div class="ir-e">🏊</div><div><div class="ir-t">Water Sports &amp; Fitness</div><div class="ir-d">Water polo, open-water swimming, running — if there's water or a finish line, I'm in.</div></div></div>
 <div class="ir"><div class="ir-e">🎧</div><div><div class="ir-t">DJing</div><div class="ir-d">Behind the decks when I need to disconnect. Mixing is just another kind of flow state.</div></div></div>
 <div class="ir"><div class="ir-e">☕</div><div><div class="ir-t">Speciality Coffee</div><div class="ir-d">V60, Chemex, Hario Switch — always chasing the perfect cup. From origin and processing to dialling in the brew.</div></div></div>
-<div class="ir"><div class="ir-e">🦴</div><div><div class="ir-t">Manual Therapy</div><div class="ir-d">Studying osteopathic manipulative therapy — understanding how the body moves, compensates, and heals.</div></div></div>`}
+<div class="ir"><div class="ir-e">🦴</div><div><div class="ir-t">Manual Therapy</div><div class="ir-d">Studying osteopathic manipulative therapy — understanding how the body moves, compensates, and heals.</div></div></div>`},
+
+  security:{title:'bernardo@kali:~/security.conf',icon:'security',label:'security.conf',
+    html:`<div style="margin-bottom:1rem"><span class="pr">bernardo@kali</span>:<span class="pa">~</span>$ <span class="fl">cat</span> security.conf</div>
+<div class="ch">This Site's Security Stack</div>
+<div class="fg"><div class="fi"><div class="fi-k">Hosting</div><div class="fi-v">GitHub Pages</div><div class="fi-s">Static — zero server-side execution</div></div><div class="fi"><div class="fi-k">CDN / Proxy</div><div class="fi-v">Cloudflare</div><div class="fi-s">Free tier, proxied</div></div><div class="fi"><div class="fi-k">TLS</div><div class="fi-v">Universal SSL + HSTS</div><div class="fi-s">Preloaded · max-age=15552000</div></div><div class="fi ac"><div class="fi-k">Security Headers</div><div class="fi-v">A+</div><div class="fi-s">securityheaders.com</div></div></div>
+<hr class="cdiv">
+<div class="ch">Security Headers Configured</div>
+<p class="ct"><b>Strict-Transport-Security</b> — <span class="cm">max-age=15552000; includeSubDomains; preload</span><br>Forces every connection to this domain and its subdomains over HTTPS for 180 days, before a single request leaves the browser. Kills SSL-stripping and hostile-network downgrade attacks.</p>
+<p class="ct"><b>Content-Security-Policy</b> — <span class="cm">strict sources, no unsafe-inline</span><br>Declares exactly which origins may serve scripts, styles and frames. Without <span class="cm">unsafe-inline</span>, an injected <span class="cm">&lt;script&gt;</span> simply never executes — the core defence against XSS.</p>
+<p class="ct"><b>X-Frame-Options</b> — <span class="cm">SAMEORIGIN</span><br>Blocks other sites from embedding this page in an iframe. Prevents clickjacking, where an invisible overlay tricks you into clicking something you can't see.</p>
+<p class="ct"><b>X-Content-Type-Options</b> — <span class="cm">nosniff</span><br>Forces browsers to honour the declared Content-Type instead of guessing it. Stops MIME confusion attacks that get an uploaded image executed as JavaScript.</p>
+<p class="ct"><b>Referrer-Policy</b> — <span class="cm">strict-origin-when-cross-origin</span><br>Sends only the bare origin — never the full path or query — to third parties, and nothing at all on an HTTPS→HTTP downgrade. Prevents leaking sensitive URLs through the Referer header.</p>
+<p class="ct"><b>Permissions-Policy</b> — <span class="cm">geolocation=(), microphone=(), camera=(), payment=()</span><br>Revokes powerful browser APIs for this document and everything it embeds. Even a fully compromised script cannot reach your camera, mic, or location.</p>
+<p class="ct"><b>Cross-Origin-Opener-Policy</b> — <span class="cm">same-origin</span><br>Severs the window reference between this page and any cross-origin opener. Blocks tab-nabbing and cross-window scripting into this context.</p>
+<p class="ct"><b>Cross-Origin-Resource-Policy</b> — <span class="cm">same-origin</span><br>Tells the browser to refuse serving these resources to other origins entirely. Mitigates side-channel leaks such as Spectre and cross-site resource inclusion.</p>
+<p class="ct"><b>Cross-Origin-Embedder-Policy</b> — <span class="cm">credentialless</span><br>Cross-origin subresources load without cookies or credentials attached. Enables origin isolation while shutting down credentialed cross-origin leaks.</p>
+<div class="hl"><div class="hl-l">Validate it yourself</div><div class="hl-t">Don't take my word for it. This site scores A+ on securityheaders.com — independently verified, no tricks. Click below to run the scan yourself.<br><a href="https://securityheaders.com/?q=https%3A%2F%2Fbernardo-sousa.com&followRedirects=on" target="_blank" rel="noopener" class="lb lb-gh" style="margin-top:10px">Run the scan →</a></div></div>
+<hr class="cdiv">
+<div class="ch">Additional Hardening</div>
+<p class="ct"><b>security.txt</b> — <a href="/.well-known/security.txt" target="_blank" rel="noopener" class="fl">/.well-known/security.txt</a>, RFC 9116 compliant. A machine-readable way for researchers to report an issue to me.</p>
+<p class="ct"><b>Honeypot</b> — Active decoy endpoints monitored for scanners. Anything that requests them wasn't browsing.</p>
+<p class="ct"><b>Bot traffic</b> — Managed via Cloudflare.</p>
+<hr class="cdiv">
+<div class="ch">DevSecOps Pipeline</div>
+<p class="ct"><b>GitHub Actions</b> runs on every push to <span class="cm">main</span>. <b>Trivy</b> handles filesystem vulnerability scanning (CRITICAL + HIGH); <b>Semgrep</b> runs SAST; <b>Gitleaks</b> sweeps the full git history for committed secrets. Any CRITICAL or HIGH finding fails the build.</p>
+<a href="https://github.com/Bernardo15Sousa/Personal/actions" target="_blank" rel="noopener" class="lb lb-gh">${svgGh} View the pipeline →</a>
+<hr class="cdiv">
+<div class="ch">Challenge</div>
+<p class="ct">This site has <b>3 hidden flags</b>. Can you find them all?</p>
+<p class="ct"><span class="cm">Hint: start where every hacker starts.</span></p>
+<p class="ct">Flag format: <span class="fl">FLAG{part1_part2_part3}</span> — assemble all three parts, then submit with <span class="fl">submit &lt;flag&gt;</span> in the terminal, or by email.</p>
+<a href="mailto:${CONTACT_EMAIL}?subject=CTF%20Flag%20Submission" class="lb lb-gh">Submit by email →</a>`},
+
+  pipeline:{title:'bernardo@kali:~/.github/workflows/security.yml',icon:'pipeline',label:'pipeline.yml',
+    html:`<div style="margin-bottom:1rem"><span class="pr">bernardo@kali</span>:<span class="pa">~</span>$ <span class="fl">cat</span> .github/workflows/security.yml</div>
+<div class="ch">DevSecOps Pipeline</div>
+<div class="yml"><span class="k">name</span>: <span class="s">Security Scan</span>
+
+<span class="k">on</span>:
+  <span class="k">push</span>:
+    <span class="k">branches</span>: [ <span class="s">main</span> ]
+  <span class="k">pull_request</span>:
+    <span class="k">branches</span>: [ <span class="s">main</span> ]
+
+<span class="k">jobs</span>:
+  <span class="k">trivy</span>:
+    <span class="k">name</span>: <span class="s">Trivy Vulnerability Scan</span>
+    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>  <span class="c"># v4.2.2 — pinned to a SHA</span>
+      - <span class="k">name</span>: <span class="s">Run Trivy</span>
+        <span class="k">uses</span>: <span class="s">aquasecurity/trivy-action@915b19b</span>  <span class="c"># 0.28.0</span>
+        <span class="k">with</span>:
+          <span class="k">scan-type</span>: <span class="s">'fs'</span>          <span class="c"># filesystem scan</span>
+          <span class="k">scan-ref</span>: <span class="s">'.'</span>
+          <span class="k">severity</span>: <span class="s">'CRITICAL,HIGH'</span>  <span class="c"># anything lower is noise</span>
+          <span class="k">format</span>: <span class="s">'table'</span>
+
+  <span class="k">semgrep</span>:
+    <span class="k">name</span>: <span class="s">Semgrep SAST</span>
+    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
+    <span class="k">container</span>:
+      <span class="k">image</span>: <span class="s">semgrep/semgrep</span>
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
+      - <span class="k">name</span>: <span class="s">Run Semgrep</span>
+        <span class="k">run</span>: <span class="s">semgrep scan --config=p/javascript --error .</span>  <span class="c"># --error fails the build</span>
+
+  <span class="k">gitleaks</span>:
+    <span class="k">name</span>: <span class="s">Gitleaks Secret Detection</span>
+    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
+        <span class="k">with</span>:
+          <span class="k">fetch-depth</span>: <span class="s">0</span>            <span class="c"># full history — secrets hide in old commits</span>
+      - <span class="k">name</span>: <span class="s">Run Gitleaks</span>
+        <span class="k">uses</span>: <span class="s">gitleaks/gitleaks-action@b6c5a1e</span>  <span class="c"># v2.3.7</span>
+
+  <span class="k">htmlhint</span>:
+    <span class="k">name</span>: <span class="s">HTMLHint Lint</span>
+    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
+      - <span class="k">run</span>: <span class="s">npm install -g htmlhint</span>
+      - <span class="k">run</span>: <span class="s">htmlhint "**/*.html" --ignore "node_modules/**"</span>
+
+  <span class="k">eslint</span>:
+    <span class="k">name</span>: <span class="s">ESLint JavaScript</span>
+    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
+      - <span class="k">run</span>: <span class="s">npm install -g eslint</span>
+      - <span class="k">run</span>: <span class="s">eslint script.js --env browser --env es2021</span>
+
+  <span class="k">security-headers</span>:
+    <span class="k">name</span>: <span class="s">Security Headers Check</span>
+    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
+    <span class="k">steps</span>:
+      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
+      - <span class="k">name</span>: <span class="s">Check Security Headers Score</span>
+        <span class="k">run</span>: |                       <span class="c"># the A+ below is enforced, not decorative</span>
+          <span class="s">SCORE=$(curl -s "https://securityheaders.com/?q=https://bernardo-sousa.com" \\
+                  | grep -o 'grade-[A-F+]*' | head -1)</span>
+          <span class="s">if [[ "$SCORE" != *"grade-Aplus"* && "$SCORE" != *"grade-A"* ]]; then</span>
+            <span class="s">echo "Score dropped below A — investigate immediately"; exit 1</span>
+          <span class="s">fi</span></div>
+<hr class="cdiv">
+<div class="ch">Pipeline Status</div>
+<p class="ct">Scans run on every push to <span class="cm">main</span>. Click to see live results.</p>
+<a href="https://github.com/Bernardo15Sousa/Personal/actions" target="_blank" rel="noopener" class="lb lb-gh">${svgGh} GitHub Actions →</a>
+<p class="ct" style="margin-top:1rem"><b>Tools:</b> Trivy (dependency &amp; filesystem CVE scan) + Semgrep (SAST) + Gitleaks (secret detection across full git history) + HTMLHint and ESLint. Any CRITICAL or HIGH finding fails the build.</p>
+<p class="ct">Third-party actions are <b>pinned to commit SHAs</b> rather than floating tags — a mutable tag like <span class="cm">@master</span> is a supply-chain compromise waiting to happen. The <b>security-headers</b> job re-checks the A+ grade on every run, so the claim on <span class="cm">security.conf</span> can't quietly rot.</p>`},
+
+  toolkit:{title:'bernardo@kali:~/toolkit.sh',icon:'toolkit',label:'toolkit.sh',init:()=>initToolkit(),
+    html:`<div style="margin-bottom:1rem"><span class="pr">bernardo@kali</span>:<span class="pa">~</span>$ <span class="fl">./</span>toolkit.sh</div>
+<div class="ch">Security Toolkit</div>
+<p class="ct" style="font-size:11.5px;color:var(--td)"><span style="color:var(--gr)">●</span> Everything below runs 100% client-side. Nothing you type here leaves your browser.</p>
+<div class="tabs" id="tkTabs">
+  <button class="tab active" data-tp="tkPw">Password Generator</button>
+  <button class="tab" data-tp="tkPgp">PGP Generator</button>
+  <button class="tab" data-tp="tkCsr">CSR Decoder</button>
+  <button class="tab" data-tp="tkCer">CER Decoder</button>
+</div>
+
+<div class="tp active" id="tkPw">
+  <div class="fld"><label for="pwLen">Length — <span id="pwLenV">24</span></label><input type="range" class="rng" id="pwLen" min="8" max="128" value="24"></div>
+  <div class="cbs">
+    <label class="cb"><input type="checkbox" id="pwU" checked> Uppercase</label>
+    <label class="cb"><input type="checkbox" id="pwL" checked> Lowercase</label>
+    <label class="cb"><input type="checkbox" id="pwN" checked> Numbers</label>
+    <label class="cb"><input type="checkbox" id="pwS" checked> Symbols</label>
+    <label class="cb"><input type="checkbox" id="pwA"> Exclude ambiguous (0 O l 1 I)</label>
+  </div>
+  <div class="out" id="pwOut"></div>
+  <div class="row" style="margin-top:.7rem"><button class="btn" id="pwGen">Regenerate</button><button class="btn gh" id="pwCopy">Copy</button><span style="font-size:11.5px;color:var(--td);margin-left:4px">Entropy: <b id="pwEnt" style="color:var(--gr)">0</b> bits</span></div>
+  <div class="err" id="pwErr"></div>
+</div>
+
+<div class="tp" id="tkPgp">
+  <div class="fld"><label for="pgName">Name</label><input class="in" id="pgName" autocomplete="off" placeholder="Ada Lovelace"></div>
+  <div class="fld"><label for="pgEmail">Email</label><input class="in" id="pgEmail" type="email" autocomplete="off" placeholder="ada@example.com"></div>
+  <div class="fld"><label for="pgPass">Passphrase</label><div class="row" style="flex-wrap:nowrap"><input class="in" id="pgPass" type="password" autocomplete="new-password"><button class="btn gh" id="pgToggle" type="button">Show</button></div></div>
+  <div class="fld"><label for="pgAlgo">Algorithm</label><select class="in" id="pgAlgo"><option value="rsa">RSA-4096</option><option value="ecc">ECC Curve25519</option></select></div>
+  <button class="btn" id="pgGen">Generate keypair</button>
+  <div class="err" id="pgErr"></div>
+  <div id="pgOut" style="display:none">
+    <div class="fld" style="margin-top:1rem"><label for="pgPub">Public key</label><textarea class="in" id="pgPub" readonly></textarea><button class="btn gh" id="pgDlPub" style="margin-top:.4rem">Download public.asc</button></div>
+    <div class="fld"><label for="pgPriv">Private key</label><textarea class="in" id="pgPriv" readonly></textarea><button class="btn gh" id="pgDlPriv" style="margin-top:.4rem">Download private.asc</button></div>
+    <div class="warn">⚠ Store your private key securely. Never share it.</div>
+  </div>
+</div>
+
+<div class="tp" id="tkCsr">
+  <div class="fld"><label for="csrIn">PEM-encoded CSR</label><textarea class="in" id="csrIn" spellcheck="false" placeholder="-----BEGIN CERTIFICATE REQUEST-----"></textarea></div>
+  <button class="btn" id="csrGo">Decode</button>
+  <div class="err" id="csrErr"></div>
+  <div id="csrOut" style="margin-top:1rem"></div>
+</div>
+
+<div class="tp" id="tkCer">
+  <div class="fld"><label for="cerIn">PEM or base64 (DER) certificate</label><textarea class="in" id="cerIn" spellcheck="false" placeholder="-----BEGIN CERTIFICATE-----"></textarea></div>
+  <button class="btn" id="cerGo">Decode</button>
+  <div class="err" id="cerErr"></div>
+  <div id="cerOut" style="margin-top:1rem"></div>
+</div>`}
 };
 
 let cur=null;const oF=new Map();
@@ -167,6 +334,7 @@ function openW(id){
   body.innerHTML=data.html;
   overlay.classList.add('open');
   body.scrollTop=0;
+  if(data.init) data.init();
   renderTB();
 }
 
@@ -234,12 +402,33 @@ function addPrompt(sc){
     } else if(e.key==='Tab'){
       e.preventDefault();
       const v=input.value.trim().toLowerCase();
-      const cmds=['help','whoami','cat about_me.txt','cat experience.md','cat conferences.log','cat interests.conf','cat toolstack.yml','ls projects/','./certifications.sh','contact','clear','sudo','exit'];
+      const cmds=['help','whoami','cat about_me.txt','cat experience.md','cat conferences.log','cat interests.conf','cat toolstack.yml','cat security.conf','ls projects/','./certifications.sh','./toolkit.sh','curl','decode','contact','clear','sudo','exit'];
       const m=cmds.filter(c=>c.startsWith(v));
       if(m.length===1) input.value=m[0];
     }
   });
 }
+
+// ── CTF part 3 ───────────────────────────────────────────────────────────────
+// The X-Challenge response header is NOT set here — it cannot be. GitHub Pages
+// serves static files only and a page can't set its own response headers.
+// It is configured MANUALLY in Cloudflare → Rules → Transform Rules →
+// Modify Response Header, as a static header on all requests to
+// bernardo-sousa.com:
+//     X-Challenge: U2VjdXJpdHlfSXNfQV9NaW5kc2V0
+// The `curl` terminal command below only *simulates* the response for players
+// who don't have a shell handy. If the Transform Rule is ever deleted, the real
+// header disappears and only the simulation remains — re-add it in Cloudflare.
+//
+// Related manual Cloudflare config: the CSP must allow unpkg.com in script-src
+// for the toolkit's OpenPGP.js / node-forge to load.
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Answers are stored as MD5 digests so the plaintext isn't sitting in the source.
+const HASH_UNLOCK='482c811da5d5b4bc6d497ffa98491e38';
+const HASH_FLAG='c393b2e419022d7fb39bcd38d8fcc887';
+const md5=s=>forge.md.md5.create().update(s).digest().toHex();
+const esc=s=>s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 
 function runCmd(sc,cmd){
   const c=cmd.trim().toLowerCase();
@@ -254,6 +443,8 @@ function runCmd(sc,cmd){
   <span class="fl">ls projects/</span>           — my projects
   <span class="fl">cat conferences.log</span>    — conferences attended
   <span class="fl">cat interests.conf</span>     — beyond the keyboard
+  <span class="fl">cat security.conf</span>      — this site's security stack
+  <span class="fl">./toolkit.sh</span>           — password / PGP / CSR / CER tools
   <span class="fl">contact</span>                — reach out on LinkedIn
   <span class="fl">whoami</span>                 — quick intro
   <span class="fl">sudo</span>                   — try it ;)
@@ -274,6 +465,9 @@ function runCmd(sc,cmd){
   else if(c==='ls projects/' || c==='ls projects'){ closeWindow(); setTimeout(()=>openW('projects'),250); }
   else if(c==='cat conferences.log' || c==='cat conf.log'){ closeWindow(); setTimeout(()=>openW('conferences'),250); }
   else if(c==='cat interests.conf'){ closeWindow(); setTimeout(()=>openW('interests'),250); }
+  else if(c==='cat security.conf'){ closeWindow(); setTimeout(()=>openW('security'),250); }
+  else if(c==='./toolkit.sh' || c==='toolkit'){ closeWindow(); setTimeout(()=>openW('toolkit'),250); }
+  else if(c==='cat .github/workflows/security.yml' || c==='cat pipeline.yml'){ closeWindow(); setTimeout(()=>openW('pipeline'),250); }
   else if(c==='contact'){
     addTermLine(sc,'<span style="color:var(--gr)">[✓]</span> Opening LinkedIn... see you on the other side!');
     setTimeout(()=>window.open('https://www.linkedin.com/in/bernardo-sousa-605a30181/','_blank'),500);
@@ -299,6 +493,69 @@ function runCmd(sc,cmd){
   else if(c==='ls'){
     addTermLine(sc,`<span style="color:var(--bl)">about_me.txt</span>  <span style="color:var(--bl)">experience.md</span>  <span style="color:var(--gr)">certifications.sh</span>  <span style="color:var(--bl)">toolstack.yml</span>  <span style="color:var(--mv)">projects/</span>  <span style="color:var(--bl)">conferences.log</span>  <span style="color:var(--mv)">writeups/</span>  <span style="color:var(--bl)">interests.conf</span>`);
   }
+  else if(c==='ls -la' || c==='ls -a' || c==='ls -al'){
+    addTermLine(sc,`total 44
+drwxr-xr-x  4 bernardo bernardo 4096 .
+drwxr-xr-x  3 root     root     4096 ..
+<span style="color:var(--td)">-rw-------  1 bernardo bernardo  187 .hidden</span>
+-rw-r--r--  1 bernardo bernardo 2048 <span style="color:var(--bl)">about_me.txt</span>
+-rw-r--r--  1 bernardo bernardo 4096 <span style="color:var(--bl)">experience.md</span>
+-rwxr-xr-x  1 bernardo bernardo 1024 <span style="color:var(--gr)">certifications.sh</span>
+-rw-r--r--  1 bernardo bernardo 1536 <span style="color:var(--bl)">toolstack.yml</span>
+drwxr-xr-x  2 bernardo bernardo 4096 <span style="color:var(--mv)">projects/</span>
+-rw-r--r--  1 bernardo bernardo  768 <span style="color:var(--bl)">conferences.log</span>
+drwxr-xr-x  2 bernardo bernardo 4096 <span style="color:var(--mv)">writeups/</span>
+-rw-r--r--  1 bernardo bernardo  512 <span style="color:var(--bl)">interests.conf</span>`);
+  }
+  else if(c==='cat .hidden'){
+    addTermLine(sc,`<span style="color:var(--td)"># forensics artifact — do not delete</span>
+hash: <span style="color:var(--yl)">482c811da5d5b4bc6d497ffa98491e38</span>
+type: MD5
+note: <span style="color:var(--gr)">"The password is the hash preimage. You know what to do."</span>`);
+  }
+  else if(c.startsWith('unlock')){
+    const arg=cmd.trim().slice(6).trim();
+    if(!arg){ addTermLine(sc,'<span style="color:var(--td)">usage: unlock &lt;password&gt;</span>'); }
+    else if(md5(arg)===HASH_UNLOCK){
+      addTermLine(sc,`<span style="color:var(--gr)">[✓] Access granted.</span>
+Decrypted artifact: <span style="color:var(--yl);font-weight:600">_4nd_t3rm1nal_</span>`);
+    } else {
+      addTermLine(sc,'<span style="color:var(--rd)">[✗] Wrong password. The hash doesn\'t lie.</span>');
+    }
+  }
+  else if(c==='curl' || c.startsWith('curl ')){
+    addTermLine(sc,`<span style="color:var(--td)">Simulating: curl -I https://bernardo-sousa.com</span>
+<span style="color:var(--bl)">[*]</span> Fetching response headers...
+<span style="color:var(--td)">&gt;</span> HTTP/2 200
+<span style="color:var(--td)">&gt;</span> strict-transport-security: max-age=15552000; includeSubDomains; preload
+<span style="color:var(--td)">&gt;</span> x-frame-options: SAMEORIGIN
+<span style="color:var(--td)">&gt;</span> x-content-type-options: nosniff
+<span style="color:var(--td)">&gt;</span> content-security-policy: default-src 'self'; ...
+<span style="color:var(--td)">&gt;</span> x-challenge: <span style="color:var(--yl)">U2VjdXJpdHlfSXNfQV9NaW5kc2V0</span>
+<span style="color:var(--bl)">[*]</span> Interesting header detected: X-Challenge
+<span style="color:var(--yl)">[?]</span> What does it mean?`);
+  }
+  else if(c.startsWith('decode')){
+    const arg=cmd.trim().slice(6).trim();
+    if(!arg){ addTermLine(sc,'<span style="color:var(--td)">usage: decode &lt;base64&gt;</span>'); }
+    else{
+      let d=null;
+      try{ d=atob(arg); }catch(_){}
+      if(d===null || !/^[\x20-\x7e]+$/.test(d)) addTermLine(sc,'<span style="color:var(--rd)">[✗] Not valid base64.</span>');
+      else addTermLine(sc,`<span style="color:var(--gr)">[✓] Decoded:</span> <span style="color:var(--yl);font-weight:600">${esc(d)}</span>`);
+    }
+  }
+  else if(c.startsWith('submit')){
+    const arg=cmd.trim().slice(6).trim();
+    if(!arg){ addTermLine(sc,'<span style="color:var(--td)">usage: submit FLAG{...}</span>'); }
+    else if(md5(arg)===HASH_FLAG){
+      addTermLine(sc,`<span style="color:var(--gr)">[✓] Correct. All three layers — source, terminal, headers.</span>
+<span style="color:var(--td)">Opening your mail client so you can claim it...</span>`);
+      setTimeout(()=>window.open(`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('CTF Flag Submission')}&body=${encodeURIComponent(arg)}`,'_blank'),500);
+    } else {
+      addTermLine(sc,'<span style="color:var(--rd)">[✗] That\'s not it. Keep digging.</span>');
+    }
+  }
   else if(c==='pwd'){ addTermLine(sc,'/home/bernardo'); }
   else if(c==='uname -a' || c==='uname'){ addTermLine(sc,'Linux kali-portfolio 6.1.0-kali9 #1 SMP x86_64 GNU/Linux'); }
   else if(c==='date'){ addTermLine(sc,new Date().toString()); }
@@ -323,7 +580,7 @@ function runCmd(sc,cmd){
 <span style="color:var(--kali)">              .';:cccc:'.      </span>`);
   }
   else if(c!==''){
-    addTermLine(sc,`<span style="color:var(--rd)">bash: ${cmd}: command not found</span>\n<span style="color:var(--td)">Type</span> <span class="fl">help</span> <span style="color:var(--td)">to see available commands.</span>`);
+    addTermLine(sc,`<span style="color:var(--rd)">bash: ${esc(cmd)}: command not found</span>\n<span style="color:var(--td)">Type</span> <span class="fl">help</span> <span style="color:var(--td)">to see available commands.</span>`);
   }
   sc.scrollTop=sc.scrollHeight;
 }
@@ -334,3 +591,179 @@ document.getElementById('wo').addEventListener('click',e=>{
     if(inp) inp.focus();
   }
 });
+
+/* ── toolkit.sh — all four tools run entirely in the browser ───────────────── */
+
+const $=id=>document.getElementById(id);
+
+function initToolkit(){
+  $('tkTabs').onclick=e=>{
+    const t=e.target.closest('.tab'); if(!t) return;
+    document.querySelectorAll('#tkTabs .tab').forEach(b=>b.classList.toggle('active',b===t));
+    document.querySelectorAll('.tp').forEach(p=>p.classList.toggle('active',p.id===t.dataset.tp));
+  };
+  initPw(); initPgp(); initDecoders();
+}
+
+/* Tab 1 — password generator */
+const PW_SETS={pwU:'ABCDEFGHIJKLMNOPQRSTUVWXYZ',pwL:'abcdefghijklmnopqrstuvwxyz',pwN:'0123456789',pwS:'!@#$%^&*()-_=+[]{};:,.<>?/~'};
+const AMBIGUOUS='0Ol1I';
+
+function pwPool(){
+  let p=Object.keys(PW_SETS).filter(id=>$(id).checked).map(id=>PW_SETS[id]).join('');
+  if($('pwA').checked) p=[...p].filter(ch=>!AMBIGUOUS.includes(ch)).join('');
+  return p;
+}
+
+// Rejection sampling — plain `% pool.length` would bias toward the low end of
+// the charset, which is exactly the bug you don't want in a password generator.
+function randChars(pool,n){
+  const max=Math.floor(256/pool.length)*pool.length;
+  let out='';
+  while(out.length<n){
+    const buf=new Uint8Array(n-out.length);
+    crypto.getRandomValues(buf);
+    for(const b of buf){ if(b<max) out+=pool[b%pool.length]; }
+  }
+  return out;
+}
+
+function genPw(){
+  const pool=pwPool(), len=+$('pwLen').value;
+  $('pwLenV').textContent=len;
+  if(!pool.length){ $('pwOut').textContent=''; $('pwEnt').textContent='0'; $('pwErr').textContent='Select at least one character set.'; return; }
+  $('pwErr').textContent='';
+  $('pwOut').textContent=randChars(pool,len);
+  $('pwEnt').textContent=Math.floor(len*Math.log2(pool.length));
+}
+
+function initPw(){
+  ['pwLen','pwU','pwL','pwN','pwS','pwA'].forEach(id=>$(id).oninput=genPw);
+  $('pwGen').onclick=genPw;
+  $('pwCopy').onclick=()=>{
+    if(!$('pwOut').textContent) return;
+    navigator.clipboard.writeText($('pwOut').textContent).then(()=>{
+      $('pwCopy').textContent='Copied ✓';
+      setTimeout(()=>$('pwCopy').textContent='Copy',1200);
+    });
+  };
+  genPw();
+}
+
+/* Tab 2 — PGP key generator */
+function dl(name,text){
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([text],{type:'application/pgp-keys'}));
+  a.download=name; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function initPgp(){
+  $('pgToggle').onclick=()=>{
+    const i=$('pgPass'), show=i.type==='password';
+    i.type=show?'text':'password';
+    $('pgToggle').textContent=show?'Hide':'Show';
+  };
+  $('pgGen').onclick=async()=>{
+    const name=$('pgName').value.trim(), email=$('pgEmail').value.trim(), pass=$('pgPass').value;
+    const err=$('pgErr'); err.textContent='';
+    if(!name||!email){ err.textContent='Name and email are both required.'; return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ err.textContent='That email address doesn\'t look valid.'; return; }
+    const btn=$('pgGen');
+    btn.disabled=true; btn.textContent='Generating keys...';
+    try{
+      const opts=$('pgAlgo').value==='rsa'?{type:'rsa',rsaBits:4096}:{type:'ecc',curve:'curve25519'};
+      const {privateKey,publicKey}=await openpgp.generateKey({...opts,userIDs:[{name,email}],passphrase:pass,format:'armored'});
+      $('pgPub').value=publicKey; $('pgPriv').value=privateKey;
+      $('pgOut').style.display='block';
+      $('pgDlPub').onclick=()=>dl('public.asc',publicKey);
+      $('pgDlPriv').onclick=()=>dl('private.asc',privateKey);
+    }catch(ex){ err.textContent='Key generation failed: '+ex.message; }
+    btn.disabled=false; btn.textContent='Generate keypair';
+  };
+}
+
+/* Tabs 3 & 4 — CSR / certificate decoders (node-forge) */
+const attr=(o,s)=>{const a=o.getField&&o.getField(s);return a?a.value:''};
+const kv=(k,v,color)=>v?`<div class="kv"><div class="kv-k">${k}</div><div class="kv-v"${color?` style="color:${color}"`:''}>${esc(String(v))}</div></div>`:'';
+const dn=o=>o.attributes.map(a=>`${a.shortName||a.name}=${a.value}`).join(', ');
+
+function keyInfo(key){
+  if(key&&key.n) return {algo:'RSA',size:key.n.bitLength()+' bits'};
+  return {algo:'EC / unsupported by decoder',size:''};
+}
+
+function sans(ext){
+  if(!ext||!ext.altNames) return '';
+  return ext.altNames.map(a=>a.value||a.ip||'').filter(Boolean).join(', ');
+}
+
+function decodeCsr(){
+  const err=$('csrErr'), out=$('csrOut');
+  err.textContent=''; out.innerHTML='';
+  try{
+    const csr=forge.pki.certificationRequestFromPem($('csrIn').value.trim());
+    if(!csr.verify()) err.textContent='Warning: CSR self-signature does not verify.';
+    const extReq=csr.getAttribute({name:'extensionRequest'});
+    const san=extReq?sans((extReq.extensions||[]).find(e=>e.name==='subjectAltName')):'';
+    const k=keyInfo(csr.publicKey);
+    out.innerHTML=
+      kv('Common Name',attr(csr.subject,'CN'))+
+      kv('Organization',attr(csr.subject,'O'))+
+      kv('Org. Unit',attr(csr.subject,'OU'))+
+      kv('Country',attr(csr.subject,'C'))+
+      kv('State',attr(csr.subject,'ST'))+
+      kv('Locality',attr(csr.subject,'L'))+
+      kv('Email',attr(csr.subject,'E'))+
+      kv('SANs',san||'none')+
+      kv('Key Algorithm',k.algo)+
+      kv('Key Size',k.size)+
+      kv('Signature Alg.',forge.pki.oids[csr.siginfo.algorithmOid]||csr.siginfo.algorithmOid);
+  }catch(ex){ err.textContent='Could not parse that CSR. Check it\'s a complete PEM block. ('+ex.message+')'; }
+}
+
+function decodeCer(){
+  const err=$('cerErr'), out=$('cerOut');
+  err.textContent=''; out.innerHTML='';
+  try{
+    const raw=$('cerIn').value.trim();
+    if(!raw) throw new Error('nothing to decode');
+    // Accept PEM as-is; treat anything else as bare base64 DER.
+    const cert=raw.includes('-----BEGIN')
+      ? forge.pki.certificateFromPem(raw)
+      : forge.pki.certificateFromAsn1(forge.asn1.fromDer(forge.util.createBuffer(forge.util.decode64(raw.replace(/\s+/g,'')))));
+    const der=forge.asn1.toDer(forge.pki.certificateToAsn1(cert)).getBytes();
+    const fp=(forge.md.sha256.create().update(der).digest().toHex().match(/../g)||[]).join(':').toUpperCase();
+    const days=Math.floor((cert.validity.notAfter-Date.now())/86400000);
+    const k=keyInfo(cert.publicKey);
+    out.innerHTML=
+      kv('Subject',dn(cert.subject))+
+      kv('Issuer',dn(cert.issuer))+
+      kv('Serial Number',cert.serialNumber)+
+      kv('Valid From',cert.validity.notBefore.toUTCString())+
+      kv('Valid To',cert.validity.notAfter.toUTCString())+
+      kv('Days Remaining',days<0?`expired ${-days} days ago`:days,days<30?'var(--rd)':'var(--gr)')+
+      kv('Key Algorithm',k.algo)+
+      kv('Key Size',k.size)+
+      kv('Signature Alg.',forge.pki.oids[cert.siginfo.algorithmOid]||cert.siginfo.algorithmOid)+
+      kv('SHA-256 Fingerprint',fp)+
+      kv('SANs',sans(cert.getExtension('subjectAltName'))||'none');
+  }catch(ex){ err.textContent='Could not parse that certificate. PEM or base64 DER expected. ('+ex.message+')'; }
+}
+
+function initDecoders(){ $('csrGo').onclick=decodeCsr; $('cerGo').onclick=decodeCer; }
+
+// Self-check for the password generator — the one piece here with real security
+// weight. Run pwSelfCheck() in the console; throws if the generator is broken.
+function pwSelfCheck(){
+  const ok=(c,m)=>{ if(!c) throw new Error('pwSelfCheck: '+m); };
+  const pool='abcXYZ789';
+  const s=randChars(pool,5000);
+  ok(s.length===5000,'wrong length');
+  ok([...s].every(ch=>pool.includes(ch)),'char outside pool');
+  const counts={}; for(const ch of s) counts[ch]=(counts[ch]||0)+1;
+  ok(Object.keys(counts).length===pool.length,'not every char reachable');
+  // Uniform-ish: no char should land more than 2x its expected share.
+  ok(Object.values(counts).every(n=>n<2*5000/pool.length),'distribution looks biased');
+  return 'pwSelfCheck: ok';
+}

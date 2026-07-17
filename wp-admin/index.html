@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="honeypot" content="true">
+<meta name="robots" content="noindex,nofollow">
+<title>Log In &lsaquo; WordPress</title>
+<style>
+body{margin:0;padding:0;background:#f0f0f1;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:13px;color:#3c434a}
+#login{width:320px;margin:8% auto 0;padding:8px 0 0}
+.logo{display:block;width:84px;height:84px;margin:0 auto 25px;border-radius:50%;background:#3c434a;color:#fff;text-align:center;font-size:46px;line-height:84px;font-weight:700}
+form{background:#fff;margin-top:20px;padding:26px 24px;border:1px solid #c3c4c7;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+label{display:block;font-size:14px;line-height:1.5;margin-bottom:3px}
+input[type=text],input[type=password]{width:100%;box-sizing:border-box;padding:6px 8px;border:1px solid #8c8f94;border-radius:3px;font-size:16px;margin-bottom:16px;background:#fbfbfc}
+.submit{text-align:right}
+button{background:#2271b1;border:1px solid #2271b1;border-radius:3px;color:#fff;padding:6px 14px;font-size:13px;cursor:pointer}
+button:hover{background:#135e96}
+.rm{font-size:12px;color:#50575e;margin-bottom:16px}
+#nav{margin:16px 0;font-size:13px;text-align:center}
+#nav a,#backtoblog a{color:#50575e;text-decoration:none}
+#backtoblog{text-align:center;font-size:13px}
+</style>
+</head>
+<body>
+<!-- monitored -->
+<div id="login">
+  <div class="logo">W</div>
+  <form name="loginform" onsubmit="return false">
+    <label for="user_login">Username or Email Address</label>
+    <input type="text" name="log" id="user_login" autocomplete="off">
+    <label for="user_pass">Password</label>
+    <input type="password" name="pwd" id="user_pass" autocomplete="off">
+    <div class="rm"><input type="checkbox" name="rememberme" id="rememberme"> <label for="rememberme" style="display:inline">Remember Me</label></div>
+    <div class="submit"><button type="submit" name="wp-submit">Log In</button></div>
+  </form>
+  <p id="nav"><a href="#">Lost your password?</a></p>
+  <p id="backtoblog"><a href="/">&larr; Go to site</a></p>
+</div>
+</body>
+</html>
