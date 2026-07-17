@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run Trivy
-        uses: aquasecurity/trivy-action@915b19bbe73b92a6cf82a1bc12b087c9a19a5fe # 0.28.0
+        uses: aquasecurity/trivy-action@915b19bbe73b92a6cf82a1bc12b087c9a19a5fe2 # 0.28.0
         with:
           scan-type: 'fs'
           scan-ref: '.'
@@ -39,10 +39,12 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 0
+      - name: Install Gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.27.2/gitleaks_8.27.2_linux_x64.tar.gz | tar -xz
+          sudo mv gitleaks /usr/local/bin/
       - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@b6c5a1e5c3040940571e1b8e1f46f44bf8e15c59 # v2.3.7
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gitleaks detect --source . --verbose
 
   htmlhint:
     name: HTMLHint Lint
@@ -62,7 +64,7 @@ jobs:
       - name: Install ESLint
         run: npm install -g eslint
       - name: Run ESLint
-        run: eslint script.js --env browser --env es2021 --rule '{"no-unused-vars": "warn", "no-undef": "warn"}'
+        run: eslint script.js
 
   security-headers:
     name: Security Headers Check

@@ -1,0 +1,10 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Honeypot files with intentionally fake credentials"
+paths = [
+  '''.env''',
+  '''wp-config.php''',
+  '''id_rsa'''
+]
