@@ -132,6 +132,36 @@
     .kv:last-child{border-bottom:none}
     .kv-k{color:var(--td);font-weight:600;flex:0 0 128px;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
     .kv-v{color:var(--tb);word-break:break-all;flex:1}
+    /* ── CSP utility classes (replace former inline styles) ── */
+    .t-td{color:var(--td)}.t-bl{color:var(--bl)}.t-ka{color:var(--kali)}.t-gr{color:var(--gr)}.t-rd{color:var(--rd)}.t-yl{color:var(--yl)}.t-mv{color:var(--mv)}.t-tb{color:var(--tb)}.t-tx{color:var(--tx)}
+    .b7{font-weight:700}.b6{font-weight:600}.w3{font-weight:300}
+    .mb1{margin-bottom:1rem}.mt1{margin-top:1rem}.mt07{margin-top:.7rem}.mt04{margin-top:.4rem}.mt10{margin-top:10px}
+    .gcf{grid-column:1/-1}.nowrap{flex-wrap:nowrap}.hidden{display:none}.frow{display:flex;gap:6px;flex-wrap:wrap}.cur-def{cursor:default}
+    .tk-hint{font-size:11.5px;color:var(--td)}.tk-note{margin-top:1rem;font-size:11px;color:var(--td)}.pw-ent{font-size:11.5px;color:var(--td);margin-left:4px}
+    /* ── work experience timeline ── */
+    .tl{position:relative;margin-left:6px;padding-left:22px}
+    .tl::before{content:'';position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(var(--wbr) 0,var(--wbr) 4px,transparent 4px,transparent 8px)}
+    .tl-node{position:relative;margin-bottom:14px}
+    .tl-node::before{content:'';position:absolute;left:-22px;top:15px;width:11px;height:11px;border-radius:50%;background:var(--wb);border:2px solid var(--td);transition:border-color .18s,box-shadow .18s}
+    .tl-node.open::before{border-color:var(--gr);box-shadow:0 0 8px rgba(166,227,161,.5)}
+    .tl-h{cursor:pointer;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid var(--wbr);border-radius:7px;transition:background .12s,border-color .12s}
+    .tl-h:hover{background:rgba(54,123,240,.06);border-color:rgba(54,123,240,.25)}
+    .tl-node.open .tl-h{border-color:rgba(166,227,161,.3);background:rgba(166,227,161,.04)}
+    .tl-m{color:var(--td);font-size:10.5px;font-weight:600;letter-spacing:.04em}
+    .tl-c{color:var(--pe);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+    .tl-r{color:var(--tb);font-weight:700;font-size:13.5px;margin-top:1px;display:flex;align-items:center;gap:7px}
+    .tl-r::after{content:'▸';color:var(--td);font-size:11px;margin-left:auto;transition:transform .2s}
+    .tl-node.open .tl-r::after{transform:rotate(90deg);color:var(--gr)}
+    .tl-p{max-height:0;overflow:hidden;transition:max-height .3s ease}
+    .tl-node.open .tl-p{max-height:900px}
+    .tl-pi{padding:12px 14px 2px;color:var(--tx);font-weight:300;font-size:12.5px;line-height:1.7}
+    .tl-pi p{margin-bottom:.6rem}.tl-pi p:last-child{margin-bottom:0}
+    .tl-built{margin-top:.6rem;padding:8px 12px;background:rgba(54,123,240,.06);border-left:3px solid var(--kali);border-radius:0 5px 5px 0;font-size:11.5px;line-height:1.6}
+    .tl-built b{color:var(--pe);font-weight:600}
+    .tl-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:.7rem}
+    .tl-pill{font-size:10px;font-weight:500;color:var(--bl);background:rgba(137,180,250,.08);border:1px solid rgba(137,180,250,.15);padding:2px 8px;border-radius:3px}
+    /* ── hash tools algorithm selector ── */
+    #hashAlgo .btn.active{background:rgba(54,123,240,.2);color:var(--bl);border-color:rgba(54,123,240,.4)}
     @media(max-width:700px){.kv{flex-direction:column;gap:2px}.kv-k{flex:none}}
     @media(min-width:900px){.dk{gap:6px 8px}}
     @media(max-width:700px){

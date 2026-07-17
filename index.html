@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bernardo@kali:~$ whoami</title>
+  <title>whoami</title>
   <meta name="description" content="Cybersecurity Engineer based in Porto, Portugal. DFIR, Incident Response, Security Engineering, Fortinet." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://unpkg.com/openpgp@5.11.2/dist/openpgp.min.js" defer></script>
-  <script src="https://unpkg.com/node-forge@1.3.1/dist/forge.min.js" defer></script>
+  <script src="https://unpkg.com/openpgp@5.11.2/dist/openpgp.min.js" integrity="sha384-GSfnO+LcQAKSCm1NYG2u/acMR+jBE5ML42eWq3lKjR0Dglq3Zp4dWI3K319/7zmD" crossorigin="anonymous" defer></script>
+  <script src="https://unpkg.com/node-forge@1.3.1/dist/forge.min.js" integrity="sha384-xE6n3RBMZWgwAhyzoIMfY7HN3oDBa/+HBwFFNyxsdY8kseup7C4Blx1yDzprEESV" crossorigin="anonymous" defer></script>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
 
 <div class="pt">
   <div class="pt-l">
-    <div class="pt-act" onclick="closeWindow()">Activities</div>
+    <div class="pt-act" data-act="close">Activities</div>
     <div class="pt-s"></div>
     <span class="pt-app" id="ptApp">Desktop</span>
   </div>
@@ -40,7 +40,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       xfce4-notifyd
     </div>
-    <button class="notif-close" onclick="dismissNotif()" title="Dismiss">×</button>
+    <button class="notif-close" data-act="dismiss" title="Dismiss">×</button>
   </div>
   <div class="notif-body">
     <div class="notif-icon">
@@ -49,7 +49,7 @@
     <div class="notif-text">
       <div class="notif-title">Welcome to my portfolio</div>
       <div class="notif-desc">Start by clicking <b>about_me.txt</b> on the desktop, or explore any file you like. You can also open the <b>terminal</b> and type <b>help</b>.</div>
-      <div class="notif-hint" onclick="dismissNotif();openW('about')">
+      <div class="notif-hint" data-act="dismiss-open" data-f="about">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         Open about_me.txt
       </div>
@@ -59,59 +59,59 @@
 </div>
 
 <div class="dk" id="dk">
-  <div class="di" onclick="openW('about')" data-f="about" data-tooltip="About Me">
+  <div class="di" data-act="open" data-f="about" data-tooltip="About Me">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
     <div class="di-l">about_me.txt</div>
   </div>
-  <div class="di" onclick="openW('experience')" data-f="experience" data-tooltip="Work History">
+  <div class="di" data-act="open" data-f="experience" data-tooltip="Work History">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pe)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
     <div class="di-l">experience.md</div>
   </div>
-  <div class="di" onclick="openW('certs')" data-f="certs" data-tooltip="Certifications & Credentials">
+  <div class="di" data-act="open" data-f="certs" data-tooltip="Certifications & Credentials">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gr)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
     <div class="di-l">certifications.sh</div>
   </div>
-  <div class="di" onclick="openW('tools')" data-f="tools" data-tooltip="Tools & Tech Stack">
+  <div class="di" data-act="open" data-f="tools" data-tooltip="Tools & Tech Stack">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yl)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
     <div class="di-l">toolstack.yml</div>
   </div>
-  <div class="di" onclick="openW('projects')" data-f="projects" data-tooltip="Projects & Open Source">
+  <div class="di" data-act="open" data-f="projects" data-tooltip="Projects & Open Source">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--mv)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
     <div class="di-l">projects/</div>
   </div>
-  <div class="di" onclick="openW('conferences')" data-f="conferences" data-tooltip="Conferences Attended">
+  <div class="di" data-act="open" data-f="conferences" data-tooltip="Conferences Attended">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="4" y1="11" x2="20" y2="11"/></svg></div>
     <div class="di-l">conferences.log</div>
   </div>
-  <div class="di" onclick="openW('writeups')" data-f="writeups" data-tooltip="CTF Write-ups">
+  <div class="di" data-act="open" data-f="writeups" data-tooltip="CTF Write-ups">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--rd)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
     <div class="di-l">writeups/</div>
   </div>
-  <div class="di" onclick="openW('interests')" data-f="interests" data-tooltip="Beyond the Keyboard">
+  <div class="di" data-act="open" data-f="interests" data-tooltip="Beyond the Keyboard">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--pe)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
     <div class="di-l">interests.conf</div>
   </div>
-  <div class="di" onclick="openW('security')" data-f="security" data-tooltip="This Site's Security Stack">
+  <div class="di" data-act="open" data-f="security" data-tooltip="This Site's Security Stack">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gr)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
     <div class="di-l">security.conf</div>
   </div>
-  <div class="di" onclick="openW('toolkit')" data-f="toolkit" data-tooltip="Security Toolkit">
+  <div class="di" data-act="open" data-f="toolkit" data-tooltip="Security Toolkit">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--yl)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
     <div class="di-l">toolkit.sh</div>
   </div>
-  <div class="di" onclick="openW('pipeline')" data-f="pipeline" data-tooltip="DevSecOps Pipeline">
+  <div class="di" data-act="open" data-f="pipeline" data-tooltip="DevSecOps Pipeline">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--bl)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
     <div class="di-l">pipeline.yml</div>
   </div>
-  <div class="di" onclick="openW('terminal')" data-f="terminal" data-tooltip="Interactive Terminal">
+  <div class="di" data-act="open" data-f="terminal" data-tooltip="Interactive Terminal">
     <div class="di-i"><svg viewBox="0 0 24 24" fill="none" stroke="var(--gr)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
     <div class="di-l">terminal</div>
   </div>
-  <div class="di" onclick="window.open('https://www.linkedin.com/in/bernardo-sousa-605a30181/','_blank')">
+  <div class="di" data-act="url" data-url="https://www.linkedin.com/in/bernardo-sousa-605a30181/">
     <div class="di-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="var(--li)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
     <div class="di-l">linkedin.url</div>
   </div>
-  <div class="di" onclick="window.open('https://github.com/Bernardo15Sousa','_blank')">
+  <div class="di" data-act="url" data-url="https://github.com/Bernardo15Sousa">
     <div class="di-i"><svg width="24" height="24" viewBox="0 0 24 24" fill="var(--tx)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg></div>
     <div class="di-l">github.url</div>
   </div>
@@ -122,10 +122,10 @@
   <div class="tb-tr" id="tbTr"></div>
 </div>
 
-<div class="wo" id="wo" onclick="if(event.target===this)closeWindow()">
-  <div class="wn" onclick="event.stopPropagation()">
+<div class="wo" id="wo">
+  <div class="wn">
     <div class="wnh">
-      <div class="wd"><button class="wdd c" onclick="closeWindow()"></button><button class="wdd m" onclick="closeWindow()"></button><button class="wdd x"></button></div>
+      <div class="wd"><button class="wdd c" data-act="close"></button><button class="wdd m" data-act="close"></button><button class="wdd x"></button></div>
       <div class="wnt" id="wT">~</div>
     </div>
     <div class="wnb" id="wB"></div>
@@ -135,10 +135,8 @@
 <script src="script.js" defer></script>
 
 <!--
-  You know how to use DevTools. Good instinct.
-  But this isn't the flag yet.
-  Decode this: ZmxhZ3tzM3VyY2VfY29kM19yM3Zl
-  Hint: it's just base64.
+  Nice, you read the source. That's the first habit.
+  Decode this: ZmxhZ3tzMHVyYzNfYzBkM19odW50M3J9
 -->
 
 </body>
