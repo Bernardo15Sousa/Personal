@@ -35,7 +35,7 @@ const CONTACT_EMAIL='bernardo.sousa.15@protonmail.com';
 
 function tbIcon(key){
   const svg=document.querySelector(`.di[data-f="${key}"] .di-i svg`);
-  return svg?svg.outerHTML:'';
+  return svg?svg.outerHTML:(W[key]&&W[key].iconSvg)||'';
 }
 
 const W={
@@ -106,8 +106,13 @@ const W={
   projects:{title:'bernardo@kali:~/projects/',icon:'projects',label:'projects/',
     html:`<div class="mb1"><span class="pr">bernardo@kali</span>:<span class="pa">~/projects</span>$ <span class="fl">ls -la</span></div>
 <div class="ch">Projects</div>
-<a href="https://github.com/Bernardo15Sousa/Athar" target="_blank" rel="noopener" class="pi pi-feat">
-  <div class="pi-n">Athar <span class="pi-feat-badge">Featured</span> <span class="pi-w">In development</span></div>
+<div class="pi pi-feat" data-act="open" data-f="security">
+  <div class="pi-n">this-site <span class="pi-feat-badge">▸ inspect</span></div>
+  <div class="pi-d">The site you're on is itself a project. Static on GitHub Pages, proxied through Cloudflare, A+ security headers, and a DevSecOps pipeline on every push to main. Click to open its full security stack.</div>
+  <div class="pi-tags"><span class="pi-tag">HTML/JS</span><span class="pi-tag">Security Headers</span><span class="pi-tag">DevSecOps</span><span class="pi-tag">Cloudflare</span></div>
+</div>
+<a href="https://github.com/Bernardo15Sousa/Athar" target="_blank" rel="noopener" class="pi">
+  <div class="pi-n">Athar <span class="pi-w">In development</span></div>
   <div class="pi-d">Cross-platform Python DFIR tool. Ingests Prefetch, MFT, USN Journal, and Event Logs, correlates them temporally, and outputs an analyst-ready timeline with findings, tags, and a self-contained HTML report.</div>
   <div class="pi-tags"><span class="pi-tag">Python</span><span class="pi-tag">DFIR</span><span class="pi-tag">Windows Forensics</span><span class="pi-tag">Timeline Analysis</span></div>
 </a>
@@ -152,6 +157,7 @@ const W={
 <div class="ir"><div class="ir-e">🦴</div><div><div class="ir-t">Manual Therapy</div><div class="ir-d">Studying osteopathic manipulative therapy: how the body moves, compensates, and heals.</div></div></div>`},
 
   security:{title:'bernardo@kali:~/security.conf',icon:'security',label:'security.conf',
+    iconSvg:`<svg viewBox="0 0 24 24" fill="none" stroke="var(--gr)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
     html:`<div class="mb1"><span class="pr">bernardo@kali</span>:<span class="pa">~</span>$ <span class="fl">cat</span> security.conf</div>
 <div class="ch">This Site's Security Stack</div>
 <div class="fg"><div class="fi"><div class="fi-k">Hosting</div><div class="fi-v">GitHub Pages</div><div class="fi-s">Static — zero server-side execution</div></div><div class="fi"><div class="fi-k">CDN / Proxy</div><div class="fi-v">Cloudflare</div><div class="fi-s">Free tier, proxied</div></div><div class="fi"><div class="fi-k">TLS</div><div class="fi-v">Universal SSL + HSTS</div><div class="fi-s">Preloaded · max-age=15552000</div></div><div class="fi ac"><div class="fi-k">Security Headers</div><div class="fi-v">A+</div><div class="fi-s">securityheaders.com</div></div></div>
@@ -173,95 +179,15 @@ const W={
 <p class="ct"><b>Honeypot</b> — Active decoy endpoints monitored for scanners. Anything that requests them wasn't browsing.</p>
 <p class="ct"><b>Bot traffic</b> — Managed via Cloudflare.</p>
 <hr class="cdiv">
-<div class="ch">DevSecOps Pipeline</div>
-<p class="ct"><b>GitHub Actions</b> runs on every push to <span class="cm">main</span>. <b>Trivy</b> handles filesystem vulnerability scanning (CRITICAL + HIGH); <b>Semgrep</b> runs SAST; <b>Gitleaks</b> sweeps the full git history for committed secrets. Any CRITICAL or HIGH finding fails the build.</p>
-<a href="https://github.com/Bernardo15Sousa/Personal/actions" target="_blank" rel="noopener" class="lb lb-gh">${svgGh} View the pipeline →</a>
+<div class="ch">CI/CD — DevSecOps Pipeline</div>
+<p class="ct">Every push to <span class="cm">main</span> triggers a <b>GitHub Actions</b> security pipeline. <b>Trivy</b> scans the filesystem for CVEs, <b>Semgrep</b> runs SAST over the JavaScript, and <b>Gitleaks</b> sweeps the full git history for committed secrets. <b>HTMLHint</b> and <b>ESLint</b> keep the markup and scripts clean, and a nightly job re-checks the A+ headers grade so the claim above can't quietly rot. Third-party actions are pinned to commit SHAs, not mutable tags.</p>
+<a href="https://github.com/Bernardo15Sousa/Personal/actions" target="_blank" rel="noopener" class="lb lb-gh">${svgGh} View the pipeline runs →</a>
 <hr class="cdiv">
 <div class="ch">Challenge</div>
 <p class="ct">This site has <b>3 independent hidden flags</b>, each hidden a different way. Can you find them all?</p>
 <p class="ct"><span class="cm">Hint: one's in the source, one's in the terminal, one's in the response headers.</span></p>
 <p class="ct">Flag format: <span class="fl">flag{...}</span>. Found all three? Email them in.</p>
 <a href="mailto:${CONTACT_EMAIL}?subject=CTF%20Flag%20Submission" class="lb lb-gh">Submit by email →</a>`},
-
-  pipeline:{title:'bernardo@kali:~/.github/workflows/security.yml',icon:'pipeline',label:'pipeline.yml',
-    html:`<div class="mb1"><span class="pr">bernardo@kali</span>:<span class="pa">~</span>$ <span class="fl">cat</span> .github/workflows/security.yml</div>
-<div class="ch">DevSecOps Pipeline</div>
-<div class="yml"><span class="k">name</span>: <span class="s">Security Scan</span>
-
-<span class="k">on</span>:
-  <span class="k">push</span>:
-    <span class="k">branches</span>: [ <span class="s">main</span> ]
-  <span class="k">pull_request</span>:
-    <span class="k">branches</span>: [ <span class="s">main</span> ]
-
-<span class="k">jobs</span>:
-  <span class="k">trivy</span>:
-    <span class="k">name</span>: <span class="s">Trivy Vulnerability Scan</span>
-    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
-    <span class="k">steps</span>:
-      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>  <span class="c"># v4.2.2 — pinned to a SHA</span>
-      - <span class="k">name</span>: <span class="s">Run Trivy</span>
-        <span class="k">uses</span>: <span class="s">aquasecurity/trivy-action@915b19b</span>  <span class="c"># 0.28.0</span>
-        <span class="k">with</span>:
-          <span class="k">scan-type</span>: <span class="s">'fs'</span>          <span class="c"># filesystem scan</span>
-          <span class="k">scan-ref</span>: <span class="s">'.'</span>
-          <span class="k">severity</span>: <span class="s">'CRITICAL,HIGH'</span>  <span class="c"># anything lower is noise</span>
-          <span class="k">format</span>: <span class="s">'table'</span>
-
-  <span class="k">semgrep</span>:
-    <span class="k">name</span>: <span class="s">Semgrep SAST</span>
-    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
-    <span class="k">container</span>:
-      <span class="k">image</span>: <span class="s">semgrep/semgrep</span>
-    <span class="k">steps</span>:
-      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
-      - <span class="k">name</span>: <span class="s">Run Semgrep</span>
-        <span class="k">run</span>: <span class="s">semgrep scan --config=p/javascript --error .</span>  <span class="c"># --error fails the build</span>
-
-  <span class="k">gitleaks</span>:
-    <span class="k">name</span>: <span class="s">Gitleaks Secret Detection</span>
-    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
-    <span class="k">steps</span>:
-      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
-        <span class="k">with</span>:
-          <span class="k">fetch-depth</span>: <span class="s">0</span>            <span class="c"># full history — secrets hide in old commits</span>
-      - <span class="k">name</span>: <span class="s">Run Gitleaks</span>
-        <span class="k">uses</span>: <span class="s">gitleaks/gitleaks-action@b6c5a1e</span>  <span class="c"># v2.3.7</span>
-
-  <span class="k">htmlhint</span>:
-    <span class="k">name</span>: <span class="s">HTMLHint Lint</span>
-    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
-    <span class="k">steps</span>:
-      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
-      - <span class="k">run</span>: <span class="s">npm install -g htmlhint</span>
-      - <span class="k">run</span>: <span class="s">htmlhint "**/*.html" --ignore "node_modules/**"</span>
-
-  <span class="k">eslint</span>:
-    <span class="k">name</span>: <span class="s">ESLint JavaScript</span>
-    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
-    <span class="k">steps</span>:
-      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
-      - <span class="k">run</span>: <span class="s">npm install -g eslint</span>
-      - <span class="k">run</span>: <span class="s">eslint script.js --env browser --env es2021</span>
-
-  <span class="k">security-headers</span>:
-    <span class="k">name</span>: <span class="s">Security Headers Check</span>
-    <span class="k">runs-on</span>: <span class="s">ubuntu-latest</span>
-    <span class="k">steps</span>:
-      - <span class="k">uses</span>: <span class="s">actions/checkout@11bd719</span>
-      - <span class="k">name</span>: <span class="s">Check Security Headers Score</span>
-        <span class="k">run</span>: |                       <span class="c"># the A+ below is enforced, not decorative</span>
-          <span class="s">SCORE=$(curl -s "https://securityheaders.com/?q=https://bernardo-sousa.com" \\
-                  | grep -o 'grade-[A-F+]*' | head -1)</span>
-          <span class="s">if [[ "$SCORE" != *"grade-Aplus"* && "$SCORE" != *"grade-A"* ]]; then</span>
-            <span class="s">echo "Score dropped below A — investigate immediately"; exit 1</span>
-          <span class="s">fi</span></div>
-<hr class="cdiv">
-<div class="ch">Pipeline Status</div>
-<p class="ct">Scans run on every push to <span class="cm">main</span>. Click to see live results.</p>
-<a href="https://github.com/Bernardo15Sousa/Personal/actions" target="_blank" rel="noopener" class="lb lb-gh">${svgGh} GitHub Actions →</a>
-<p class="ct mt1"><b>Tools:</b> Trivy (dependency &amp; filesystem CVE scan) + Semgrep (SAST) + Gitleaks (secret detection across full git history) + HTMLHint and ESLint. Any CRITICAL or HIGH finding fails the build.</p>
-<p class="ct">Third-party actions are <b>pinned to commit SHAs</b> rather than floating tags. A mutable tag like <span class="cm">@master</span> is a supply-chain compromise waiting to happen. The <b>security-headers</b> job re-checks the A+ grade on every run, so the claim on <span class="cm">security.conf</span> can't quietly rot.</p>`},
 
   toolkit:{title:'bernardo@kali:~/toolkit.sh',icon:'toolkit',label:'toolkit.sh',init:()=>initToolkit(),
     html:`<div class="mb1"><span class="pr">bernardo@kali</span>:<span class="pa">~</span>$ <span class="fl">./</span>toolkit.sh</div>
@@ -511,7 +437,6 @@ function runCmd(sc,cmd){
   else if(c==='cat interests.conf'){ closeWindow(); setTimeout(()=>openW('interests'),250); }
   else if(c==='cat security.conf'){ closeWindow(); setTimeout(()=>openW('security'),250); }
   else if(c==='./toolkit.sh' || c==='toolkit'){ closeWindow(); setTimeout(()=>openW('toolkit'),250); }
-  else if(c==='cat .github/workflows/security.yml' || c==='cat pipeline.yml'){ closeWindow(); setTimeout(()=>openW('pipeline'),250); }
   else if(c==='contact'){
     addTermLine(sc,'<span class="t-gr">[✓]</span> Opening LinkedIn... see you on the other side!');
     setTimeout(()=>window.open('https://www.linkedin.com/in/bernardo-sousa-605a30181/','_blank'),500);
